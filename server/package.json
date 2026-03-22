@@ -1,0 +1,17 @@
+{
+  "name": "parsex-server",
+  "version": "1.0.0",
+  "description": "ParseX backend — multi-provider AI proxy server",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "*",
+    "dotenv": "*",
+    "express": "*",
+    "express-rate-limit": "*"
+  }
+}
