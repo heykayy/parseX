@@ -222,78 +222,6 @@ Results displayed
 
 ---
 
-## Deployment
-
-### Frontend → Vercel
-
-**Option A — via GitHub (recommended)**
-
-1. Push your project to GitHub
-2. Go to [vercel.com](https://vercel.com) and sign in
-3. Click **Add New → Project**
-4. Import your GitHub repository
-5. Vercel auto-detects Vite — no build settings needed
-6. Click **Deploy**
-
-**Option B — via CLI**
-
-```powershell
-npm install -g vercel
-vercel
-```
-
-Follow the prompts. Vercel detects Vite automatically.
-
----
-
-### Backend → Railway
-
-1. Go to [railway.app](https://railway.app) and sign in with GitHub
-2. Click **New Project → Deploy from GitHub repo**
-3. Select your repository, set the **root directory** to `server`
-4. Add your environment variables in the Railway dashboard:
-   - `ANTHROPIC_KEY`
-   - `GEMINI_KEY` (if using)
-   - `OPENAI_KEY` (if using)
-   - `FRONTEND_URL` — set this to your Vercel URL e.g. `https://parsex.vercel.app`
-5. Railway detects Node.js and deploys automatically
-
----
-
-### Connect Frontend to Deployed Backend
-
-Once your backend is deployed, you get a URL like `https://parsex-server.railway.app`.
-
-Update `vite.config.js`:
-
-```js
-proxy: {
-  "/api": {
-    target: "https://parsex-server.railway.app",
-    changeOrigin: true,
-  },
-},
-```
-
-Then redeploy the frontend to Vercel.
-
----
-
-## Environment Variables Reference
-
-### `server/.env`
-
-| Variable | Required | Description |
-|---|---|---|
-| `ANTHROPIC_KEY` | If using Claude | Get from console.anthropic.com |
-| `GEMINI_KEY` | If using Gemini | Get from aistudio.google.com |
-| `OPENAI_KEY` | If using GPT-4o / Copilot | Get from platform.openai.com |
-| `OPENAI_BASE_URL` | Only for Copilot | `https://api.githubcopilot.com` |
-| `PORT` | No | Defaults to 3001 |
-| `FRONTEND_URL` | In production | Your Vercel deployment URL |
-
----
-
 ## Common Errors
 
 | Error | Cause | Fix |
@@ -314,4 +242,4 @@ MIT — free to use, modify, and distribute.
 
 ## Author
 
-Built with React, Node.js, and multi-provider AI APIs.
+Creator of <usename></usename>
