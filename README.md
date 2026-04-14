@@ -242,4 +242,4 @@ MIT — free to use, modify, and distribute.
 
 ## Author
 
-Creator of <usename></usename>
+Creator of **parseX** : **heykayy**
