@@ -13,7 +13,7 @@ export default defineConfig({
     // Both work — the proxy just makes it cleaner
     proxy: {
       "/api": {
-        target: "http://localhost:3001",
+        target: "https://parsex-production.up.railway.app",
         changeOrigin: true,
       },
     },
