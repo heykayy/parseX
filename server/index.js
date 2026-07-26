@@ -31,7 +31,7 @@ const KEYS = {
 // Allowed models per provider — callers cannot request a different model
 const ALLOWED_MODELS = {
   claude : "claude-sonnet-4-20250514",
-  gemini : "gemini-2.5-flash",
+  gemini : "gemini-3.5-flash",
   openai : "gpt-4o",
 };
 
