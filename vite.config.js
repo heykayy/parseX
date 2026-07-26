@@ -14,7 +14,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         // Replace with your actual Render backend URL, e.g.
-        target: "https://parsex.onrender.com",
+        target: "https://your-backend.onrender.com",
         changeOrigin: true,
       },
     },

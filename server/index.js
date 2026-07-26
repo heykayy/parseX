@@ -9,7 +9,6 @@
  *   GET  /health       → liveness check
  */
 
-import fetch     from "node-fetch";
 import express   from "express";
 import cors      from "cors";
 import rateLimit from "express-rate-limit";
@@ -32,7 +31,7 @@ const KEYS = {
 // Allowed models per provider — callers cannot request a different model
 const ALLOWED_MODELS = {
   claude : "claude-sonnet-4-20250514",
-  gemini : "gemini-1.5-flash",
+  gemini : "gemini-2.5-flash",
   openai : "gpt-4o",
 };
 

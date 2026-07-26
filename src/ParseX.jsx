@@ -250,7 +250,7 @@ const PROVIDER_CONFIG = {
       label      : "Gemini",
       company    : "Google",
       endpoint   : "/api/gemini",     // hits server/index.js → Google
-      model      : "gemini-1.5-flash",
+      model      : "gemini-2.5-flash",
       maxTokenCap: 4000,
     },
 
