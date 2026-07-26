@@ -12,6 +12,7 @@
     "cors": "*",
     "dotenv": "*",
     "express": "*",
-    "express-rate-limit": "*"
+    "express-rate-limit": "*",
+    "node-fetch": "^3.3.2"
   }
 }

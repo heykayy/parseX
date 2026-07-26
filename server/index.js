@@ -9,6 +9,7 @@
  *   GET  /health       → liveness check
  */
 
+import fetch     from "node-fetch";
 import express   from "express";
 import cors      from "cors";
 import rateLimit from "express-rate-limit";
@@ -37,11 +38,11 @@ const ALLOWED_MODELS = {
 
 const MAX_TOKENS_CAP = 4000;
 
-const ALLOWED_ORIGINS = [
-  "http://localhost:5173",
-  "http://localhost:4173",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
+const ALLOWED_ORIGINS = (
+  process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim())
+    : ["http://localhost:5173", "http://localhost:4173"]
+).filter(Boolean);
 
 /* ─────────────────────────────────────────────────────────────────────────
    STARTUP CHECK — warn if a key is missing (don't crash, just warn,

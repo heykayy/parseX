@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { jsonrepair } from "jsonrepair";
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -259,7 +260,7 @@ const PROVIDER_CONFIG = {
   },
 
   // ← CHANGE THIS ONE LINE to switch provider across the whole app
-  activeProvider: "openai",
+  activeProvider: "gemini",
 };
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -430,9 +431,13 @@ async function buildQnA(summary, qnaCount) {
   try {
     return JSON.parse(clean);
   } catch {
-    const match = clean.match(/\[[\s\S]*\]/);
-    if (match) return JSON.parse(match[0]);
-    throw new Error(`Q&A response from ${ACTIVE.label} was not valid JSON.`);
+    // Fall back to json-repair for malformed / markdown-wrapped JSON
+    try {
+      const safe = jsonrepair(clean);
+      return JSON.parse(safe);
+    } catch {
+      throw new Error(`Q&A response from ${ACTIVE.label} was not valid JSON.`);
+    }
   }
 }
 
