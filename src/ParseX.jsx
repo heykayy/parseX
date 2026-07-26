@@ -228,6 +228,12 @@ function chunkText(text, size = CHUNK_SIZE, overlap = OVERLAP) {
 
 const PROVIDER_CONFIG = {
 
+  // In dev, Vite's proxy (vite.config.js) forwards "/api/..." to the local
+  // backend. In production (Vercel), there is no such proxy, so we need the
+  // full Render backend URL. Set VITE_API_BASE_URL in Vercel's env vars,
+  // e.g. https://parsex-server.onrender.com — leave it unset locally.
+  apiBase: import.meta.env.VITE_API_BASE_URL || "",
+
   providers: {
 
     /* ── Anthropic Claude ──────────────────────────────────────────────── */
@@ -338,7 +344,7 @@ async function callAI(userContent, systemPrompt, maxTokens = 1200) {
   /* ── send to your backend server (which holds the API key) ── */
   let res;
   try {
-    res = await fetch(config.endpoint, {
+    res = await fetch(PROVIDER_CONFIG.apiBase + config.endpoint, {
       method : "POST",
       headers: { "Content-Type": "application/json" },
       body   : JSON.stringify(body),

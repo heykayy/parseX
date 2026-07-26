@@ -13,7 +13,8 @@ export default defineConfig({
     // Both work — the proxy just makes it cleaner
     proxy: {
       "/api": {
-        target: "https://parsex-production.up.railway.app",
+        // Replace with your actual Render backend URL, e.g.
+        target: "https://parsex.onrender.com",
         changeOrigin: true,
       },
     },
